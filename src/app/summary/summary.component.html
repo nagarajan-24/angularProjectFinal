@@ -1,0 +1,23 @@
+<div class="parent">
+        <div class="card">
+            <h3>Sleep</h3>
+            <p>Total : {{ getCount('sleep') }}</p>
+            <div *ngFor="let log of getLogsByType('sleep')">
+            <p>Time :{{ log.start | date:'shortTime' }} - {{ log.end | date:'shortTime' }}</p>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Feed</h3>
+            <p>Total : {{ getCount('feed') }}</p>
+            <div *ngFor="let log of getLogsByType('feed')">
+            <p>Time :{{ log.start | date:'shortTime' }} - {{ log.end | date:'shortTime' }}</p>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Diaper</h3>
+            <p>Total : {{ getCount('diaper') }}</p>
+            <div *ngFor="let log of getLogsByType('diaper')">
+            <p>Time : {{ log.start | date:'shortTime' }} - {{ log.end | date:'shortTime' }}</p>
+        </div>
+</div>
+  
