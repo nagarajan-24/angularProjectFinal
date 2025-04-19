@@ -1,52 +1,28 @@
-.parent{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(252, 243, 243);
-    flex-direction: column;
-    height: 31.2em;
+.name {
+  background-color: #ffffff;
+  padding: 1em;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 350px;
+  margin: 2rem auto;
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+  }  
 }
-.cont1{
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    max-width: 600px;
-    .title{
-        text-align: center;
-        font-size: x-large;
-        font-weight: bold;
-        color: #ef6354;
-        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      }
-      .name {
-        color: blue;
-        margin-left: 2.5em;
-        font-size: medium;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      .status{
-        margin-left: 1em;
-        input{
-          display: inline-block;
-          width :60px;
-        }
-      }    
-}
-.btn{
-  button{
-      text-align: center;
-      padding: 8px 16px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      margin-left: 40%;
+
+.activity {
+  background-color: #f0f8ff;
+  border-left: 6px solid #4facfe;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
+  h4 {
+    margin: 0 0 0.5rem;
+    color: #007acc;
   }
-   button:hover {
-      background-color: #0056b3;
-    }
 }

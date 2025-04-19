@@ -1,14 +1,34 @@
-<div class="parent">
-    <div class="cont1">
-        <div class="title">
-            <p>Baby Activity</p>
-        </div>
-        <div class="name">
-            <p>Baby Name : {{bName | titlecase}}</p>
-        </div>
-        <div class="status">
-            <p>Feeding Time : </p>
-            <p>Sleeping Time : </p>
-            <p>Diaper Change : </p>
-        </div>
-</div>
+<div class="name">
+    <h2>Baby Name: {{ babyName }}</h2>
+  
+    <div class="activity">
+      <h4>Feeding:</h4>
+      <p *ngIf="latestFeeding">
+        <strong>Start:</strong> {{ latestFeeding.sTime | timeDate  }} <br>
+        <strong>End:</strong> {{ latestFeeding.eTime | timeDate }} <br>
+        <em>Last updated: {{ feedingAgo }}</em>
+      </p>
+      <p *ngIf="!latestFeeding">No feeding records.</p>
+    </div>
+  
+    <div class="activity">
+      <h4>Sleeping:</h4>
+      <p *ngIf="latestSleeping">
+        <strong>Start:</strong> {{ latestSleeping.sTime | timeDate }} <br>
+        <strong>End:</strong> {{ latestSleeping.eTime | timeDate }} <br>
+        <em>Last updated: {{ sleepingAgo }}</em>
+      </p>
+      <p *ngIf="!latestSleeping">No sleeping records.</p>
+    </div>
+  
+    <div class="activity">
+      <h4>Diaper Change:</h4>
+      <p *ngIf="latestDiaper">
+        <strong>Start:</strong> {{ latestDiaper.sTime | timeDate }} <br>
+        <strong>End:</strong> {{ latestDiaper.eTime | timeDate }} <br>
+        <em>Last updated: {{ diaperAgo }}</em>
+      </p>
+      <p *ngIf="!latestDiaper">No diaper change records.</p>
+    </div>
+  </div>
+  

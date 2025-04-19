@@ -1,17 +1,15 @@
 <div class="parent">
     <div class="cont1">
-      <form #activityForm="ngForm" (ngSubmit)="onSubmit(activityForm)">
+      <form class="cont2" #activityForm="ngForm" (ngSubmit)="onSubmit(activityForm)">
         <div class="name">
-          <label for="ID">Baby Id :</label>
-          <input id="text" type="text" placeholder="Baby Id"ngModel name="bid"required style="width: 15em;height: 2em;margin-left: 2.5em;"/><br>
           <label for="bName">Baby Name :</label>
-          <input id="bName" type="text" placeholder="Baby Name"ngModel name="bName"required style="width: 15em;height: 2em;margin-top: 1em;"/>
+          <input id="details" type="text" placeholder="Baby Name"ngModel name="bName"required style="width: 18em;height: 2em;margin-top: 1em;padding-left: 2em;"/>
         </div>
   
         <div class="activity">
           <label for="type">Activity :</label>
           <select id="type" ngModel name="type" required
-            style="width: 18em; margin-left: 1.2em; height: 2em; border-style: solid;">
+            style="width: 21em; margin-left: 2.6em; height: 2.8em; border-style: solid;">
             <option value="" disabled selected>Select an activity</option>
             <option value="feeding">Feeding</option>
             <option value="sleep">Sleep</option>
@@ -21,12 +19,12 @@
   
         <div class="time">
           <label for="sTime">Start Time :</label>
-          <input id="sTime" type="datetime-local" ngModel name="sTime" required
-            style="width: 18em; height: 2em; border-style: solid; margin-bottom: 2em;"/><br />
+          <input id="details" type="datetime-local" ngModel name="sTime" required
+            style="width: 20.5em; height: 2.8em; border-style: solid; margin-bottom: 2em;border-width: 1px;"/><br />
   
           <label for="eTime">End Time :</label>
-          <input id="eTime" type="datetime-local" ngModel name="eTime" required
-            style="width: 18em; height: 2em; border-style: solid;"/>
+          <input id="details" type="datetime-local" ngModel name="eTime" required
+            style="width: 20.5em; height: 2.8em; border-style: solid;border-width: 1px;"/>
         </div>
   
         <button type="submit">Log Activity</button>

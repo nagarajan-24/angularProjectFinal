@@ -8,7 +8,7 @@ import { SettingsComponent } from './settings/settings.component';
 export const routes: Routes = [
     {path:'', component : HomeComponent},
     {path:'activity', component : ActivityComponent},
-   { path: 'activity/:name', component: ActivityComponent },
+    { path: 'activity/:name', component: ActivityComponent },
     {path:'add', component : AddActivityComponent},
     {path:'summary', component : SummaryComponent},
     {path:'settings', component : SettingsComponent}

@@ -1,26 +1,56 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
+import { ServiceService } from '../service.service';
+
 
 @Component({
   selector: 'app-summary',
   imports: [CommonModule],
-  templateUrl: './summary.component.html',
+  templateUrl:'./summary.component.html',
   styleUrl: './summary.component.css'
 })
-export class SummaryComponent {
-  activityLogs = [
-    { type: 'sleep', start: '2025-04-18T10:00:00', end: '2025-04-18T12:00:00' },
-    { type: 'feed', start: '2025-04-18T13:00:00', end: '2025-04-18T13:30:00' },
-    { type: 'diaper', start: '2025-04-18T14:00:00', end: '2025-04-18T14:10:00' },
-    { type: 'sleep', start: '2025-04-18T15:00:00', end: '2025-04-18T16:00:00' },
-    { type: 'feed', start: '2025-04-18T17:00:00', end: '2025-04-18T17:20:00' },
-    { type: 'feed', start: '2025-04-18T17:00:00', end: '2025-04-18T17:20:00' }
-  ];
-  getLogsByType(type: string) {
-    return this.activityLogs.filter(log => log.type === type);
+export class SummaryComponent implements OnInit {
+  getDetails: any [] = [] ;
+  baby: any;
+  groupedActivities: { [key: string]: any } = {};
+  ngOnInit(): void {
+   
   }
   
-  getCount(type: string) {
-    return this.getLogsByType(type).length;
+
+  constructor(private bs: ServiceService) {
+    this.bs.selectedBaby$.subscribe(b => this.baby = b);
+    this.getDetails = bs.getLogsForCurrentBaby();
+    console.log(this.getDetails);
+    this.groupActivitiesByType(this.getDetails);
   }
+  groupActivitiesByType(activities: any[]) {
+    const groups: { [key: string]: any } = {};
+
+    activities.forEach(act => {
+      const type = act.type;
+      const start = new Date(act.sTime);
+      const end = new Date(act.eTime);
+      const duration = (end.getTime() - start.getTime()) / (1000 * 60); // duration in minutes
+
+      if (!groups[type]) {
+        groups[type] = { totalDuration: 0, list: [] };
+      }
+
+      groups[type].list.push({
+        sTime: act.sTime,
+        eTime: act.eTime,
+        duration
+      });
+
+      groups[type].totalDuration += duration;
+    });
+
+    this.groupedActivities = groups;
+  }
+  castToString(value: unknown): string {
+    return String(value);
+  }
+
 }
+

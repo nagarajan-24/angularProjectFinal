@@ -1,23 +1,15 @@
-<div class="parent">
-        <div class="card">
-            <h3>Sleep</h3>
-            <p>Total : {{ getCount('sleep') }}</p>
-            <div *ngFor="let log of getLogsByType('sleep')">
-            <p>Time :{{ log.start | date:'shortTime' }} - {{ log.end | date:'shortTime' }}</p>
-            </div>
-        </div>
-        <div class="card">
-            <h3>Feed</h3>
-            <p>Total : {{ getCount('feed') }}</p>
-            <div *ngFor="let log of getLogsByType('feed')">
-            <p>Time :{{ log.start | date:'shortTime' }} - {{ log.end | date:'shortTime' }}</p>
-            </div>
-        </div>
-        <div class="card">
-            <h3>Diaper</h3>
-            <p>Total : {{ getCount('diaper') }}</p>
-            <div *ngFor="let log of getLogsByType('diaper')">
-            <p>Time : {{ log.start | date:'shortTime' }} - {{ log.end | date:'shortTime' }}</p>
-        </div>
+<div class="parent" *ngIf="groupedActivities && (groupedActivities | keyvalue) as entries">
+  <div *ngFor="let type of entries" class="child">
+    <h3>{{ type.key | titlecase }}</h3>
+    <p class="total-duration">
+      <strong>Total {{ type.key }} time:</strong> {{ type.value.totalDuration | number:'1.0-0' }} mins
+    </p>
+    <ul class="list-parent">
+      <li *ngFor="let item of type.value.list" class="list-child">
+        <strong>Start: </strong> {{ item.sTime | date:'short' }} <br>
+        <strong>End: </strong> {{ item.eTime | date:'short' }} <br>
+        <strong>Duration: </strong> {{ item.duration | number:'1.0-0' }} mins
+      </li>
+    </ul>
+  </div>
 </div>
-  

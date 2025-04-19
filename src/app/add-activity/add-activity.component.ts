@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm,  } from '@angular/forms';
-import { BabyService } from '../baby.service';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-add-activity',
@@ -11,22 +11,29 @@ import { BabyService } from '../baby.service';
   styleUrls: ['./add-activity.component.css']
 })
 export class AddActivityComponent {
-  constructor(private bs :BabyService){}
+  constructor(private bs: ServiceService) {}
+
   onSubmit(form: NgForm) {
     if (form.invalid) {
       alert('All fields are required!');
       return;
     }
+
     const data = form.value;
+    const bName = this.bs.getCurrentBabyName();
+
     const activity = {
-      id: data.bid, 
       name: data.bName,
-      type:data.type,
+      type: data.type,
       sTime: data.sTime,
       eTime: data.eTime,
       manual: true,
-      };
-      this.bs.addActivity(data.bId, activity); 
+    };
+    console.log(activity);
+
+    this.bs.addActivity(data.bName, activity);
+    alert('Activity added successfully!');
+    form.reset();
   }
 } 
 
