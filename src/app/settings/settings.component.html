@@ -1,14 +1,19 @@
-<div class="parent">
-    <div class="updateName">
-        <input type="text" placeholder="Old baby name" [(ngModel)]="oldName">
-        <input type="text" placeholder="New baby name" [(ngModel)]="newName">
-        <button (click)="updateName()">Update Name</button>
+<div class="gf">
+    <div class="parent">
+        <div class="updateName">
+            <input type="text" placeholder="Old baby name" [(ngModel)]="oldName">
+            <input type="text" placeholder="New baby name" [(ngModel)]="newName">
+            <button (click)="updateName()">Update Name</button>
+        </div>
+        <div>
+            <p *ngIf="successMessage" style="color: green">{{ successMessage }}</p>
+            <p *ngIf="errorMessage" style="color: red">{{ errorMessage }}</p>
+        </div>
     </div>
-    <div>
-        <p *ngIf="successMessage" style="color: green">{{ successMessage }}</p>
-        <p *ngIf="errorMessage" style="color: red">{{ errorMessage }}</p>
+    <div class="parent">
+        <div class="clearLogs">
+            <input type="text" placeholder="Baby name" [(ngModel)]="bName">
+            <button (click)="clearLogs()">Clear Logs</button>
+        </div>
     </div>
 </div>
-  
-  
-  

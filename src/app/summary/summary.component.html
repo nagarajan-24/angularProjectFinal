@@ -1,4 +1,4 @@
-<div class="parent" *ngIf="groupedActivities && (groupedActivities | keyvalue) as entries">
+<div class="parent" *ngIf="groupActivities && (groupActivities | keyvalue) as entries">
   <div *ngFor="let type of entries" class="child">
     <h3>{{ type.key | titlecase }}</h3>
     <p class="total-duration">

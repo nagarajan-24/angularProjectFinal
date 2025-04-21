@@ -63,13 +63,13 @@ export class ActivityComponent {
     const past = new Date(time);
     const diffMs = now.getTime() - past.getTime();
 
-    const minutes = Math.floor(diffMs / 60000);
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
+    const mins = Math.floor(diffMs / 60000);
+    const hrs = Math.floor(mins / 60);
+    const minute = mins % 60; 
 
-    if (hours === 0 && mins === 0) return 'just now';
-    if (hours === 0) return `${mins} mins ago`;
-    if (mins === 0) return `${hours} hrs ago`;
-    return `${hours} hrs ${mins} mins ago`;
+    if (hrs === 0 && minute === 0) return 'just now';
+    if (hrs === 0) return `${minute} mins ago`;
+    if (mins === 0) return `${hrs} hrs ago`;
+    return `${hrs} hrs ${minute} mins ago`;
   }
 }

@@ -12,17 +12,14 @@ export class TimeDatePipe implements PipeTransform {
     const minutes: string = date.getMinutes().toString().padStart(2, '0');
     let ampm: string = 'AM';
 
-    // Adjust for 12-hour format
     if (hours >= 12) {
       ampm = 'PM';
       if (hours > 12) {
-        hours -= 12;  // Convert hours from 24-hour to 12-hour
+        hours -= 12;  
       }
     } else if (hours === 0) {
-      hours = 12;  // 12 AM case
+      hours = 12;  
     }
-
-    // Format the hours and return time in 12-hour format with AM/PM
     return `${hours}:${minutes} ${ampm}`;
   }
 }

@@ -9,17 +9,15 @@ import { ServiceService } from '../service.service';
   templateUrl:'./summary.component.html',
   styleUrl: './summary.component.css'
 })
-export class SummaryComponent implements OnInit {
+export class SummaryComponent {
   getDetails: any [] = [] ;
   baby: any;
-  groupedActivities: { [key: string]: any } = {};
-  ngOnInit(): void {
-   
-  }
+  groupActivities: { [key: string]: any } = {};
+  
   
 
   constructor(private bs: ServiceService) {
-    this.bs.selectedBaby$.subscribe(b => this.baby = b);
+    this.bs.selectBaby$.subscribe(b => this.baby = b);
     this.getDetails = bs.getLogsForCurrentBaby();
     console.log(this.getDetails);
     this.groupActivitiesByType(this.getDetails);
@@ -29,13 +27,18 @@ export class SummaryComponent implements OnInit {
 
     activities.forEach(act => {
       const type = act.type;
-      const start = new Date(act.sTime);
-      const end = new Date(act.eTime);
-      const duration = (end.getTime() - start.getTime()) / (1000 * 60); // duration in minutes
-
       if (!groups[type]) {
-        groups[type] = { totalDuration: 0, list: [] };
+        groups[type] = {
+          list: [], 
+          totalDuration: 0 
+        };
       }
+      const start = new Date(act.sTime);
+      console.log(start)
+      const end = new Date(act.eTime);
+      console.log(end);
+      const duration = (end.getTime() - start.getTime()) / (1000 * 60);
+      console.log(duration);
 
       groups[type].list.push({
         sTime: act.sTime,
@@ -43,14 +46,12 @@ export class SummaryComponent implements OnInit {
         duration
       });
 
-      groups[type].totalDuration += duration;
+      groups[type].totalDuration =groups[type].totalDuration + duration;
     });
 
-    this.groupedActivities = groups;
+    this.groupActivities = groups;
   }
-  castToString(value: unknown): string {
-    return String(value);
-  }
+ 
 
 }
 

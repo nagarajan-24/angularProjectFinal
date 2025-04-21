@@ -20,14 +20,12 @@ export class AddActivityComponent {
     }
 
     const data = form.value;
-    const bName = this.bs.getCurrentBabyName();
 
     const activity = {
       name: data.bName,
       type: data.type,
       sTime: data.sTime,
       eTime: data.eTime,
-      manual: true,
     };
     console.log(activity);
 

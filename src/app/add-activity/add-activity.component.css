@@ -3,24 +3,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f4f4f9; 
+    background-color:white; 
     
   }
   
  
   .cont1 {
     margin-top: 3em;
-    background-color: white;
+    background-color: #f0f8ff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 400px;
     height: 390px;
   }
- 
- 
   label {
-    display: inline;
     margin-bottom: 0.5em;
     font-weight: bold;
     font-size: 1.2em;

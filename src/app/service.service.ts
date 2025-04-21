@@ -9,96 +9,73 @@ export class ServiceService {
   private babyListKey = 'babyList';
   private currentBabyKey = 'currentBaby';
   private activityPrefix = 'activity_';       
-  constructor() {
-    console.log(this.babyListKey)
-    console.log(this.activityPrefix)
-    console.log(this.currentBabyKey)
-  }
-  private selectedBabySource = new BehaviorSubject<any>(null);
-  selectedBaby$ = this.selectedBabySource.asObservable();
-  
-  setSelectedBaby(baby: any) {
-    this.selectedBabySource.next(baby);
-  }
-  getSelectedBaby() {
-    return this.selectedBabySource.value;
-  }
 
-  // Get all baby names stored in localStorage
+  constructor() { }
+
+  private selectBabySource = new BehaviorSubject<any>(null);
+  selectBaby$ = this.selectBabySource.asObservable();
+
   getAllBabyNames(): string[] {
-    const stored = localStorage.getItem(this.babyListKey);
+    const stored =localStorage.getItem(this.babyListKey);
+
     return stored ? JSON.parse(stored) : [];
   }
-
-  // Create a new baby and initialize empty activity list
   createBaby(name: string) {
     const babies = this.getAllBabyNames();
     if (!babies.includes(name)) {
       babies.push(name);
       localStorage.setItem(this.babyListKey, JSON.stringify(babies));
       localStorage.setItem(this.activityPrefix + name, JSON.stringify([]));
+    } else {
+      alert('Already that baby name is there');
     }
   }
- 
   setCurrentBabyName(name: string) {
     localStorage.setItem(this.currentBabyKey, name);
   }
   getCurrentBabyName(): string {
     return localStorage.getItem(this.currentBabyKey) || '';
   }
-
-  // Get logs for the current selected baby
+  getBabyLogs(babyName: string): any[] {
+    return JSON.parse(localStorage.getItem(this.activityPrefix + babyName) || '[]');
+  }
   getLogsForCurrentBaby(): any[] {
-    return this.getLogs(this.getCurrentBabyName());
+    return this.getBabyLogs(this.getCurrentBabyName());
   }
-
-  // Get logs for a specific baby
-  getLogs(name: string): any[] {
-    return JSON.parse(localStorage.getItem(this.activityPrefix + name) || '[]');
-  }
-  getActivities(baby: string): any[] {
-    return JSON.parse(localStorage.getItem(this.activityPrefix + baby) || '[]');
-  }
-
-  // Add a new activity to a baby's logs
   addActivity(babyName: string, activity: any) {
-    const logs = this.getLogs(babyName);
+    const logs = this.getBabyLogs(babyName);
     logs.push(activity);
     localStorage.setItem(this.activityPrefix + babyName, JSON.stringify(logs));
   }
 
-  // Clear all logs for a baby
-  clearLogsFor(babyName: string) {
-    localStorage.removeItem(this.activityPrefix + babyName);
-  }
-
   updateBabyName(oldName: string, newName: string): boolean {
-    const allBabies = JSON.parse(localStorage.getItem('babyList') || '[]');
-    
+    const allBabies = JSON.parse(localStorage.getItem(this.babyListKey) || '[]');
     const index = allBabies.findIndex((b: string) => b === oldName);
-  
+
     if (index !== -1) {
-      // Update baby list
       allBabies[index] = newName;
-      localStorage.setItem('babyList', JSON.stringify(allBabies));
-  
-      // Migrate activity data
-      const activityData = localStorage.getItem(oldName);
+      localStorage.setItem(this.babyListKey, JSON.stringify(allBabies));
+
+      const activityData = localStorage.getItem(this.activityPrefix + oldName);
       if (activityData) {
-        localStorage.setItem(newName, activityData);
-        localStorage.removeItem(oldName);
+        localStorage.setItem(this.activityPrefix + newName, activityData);
+        localStorage.removeItem(this.activityPrefix + oldName);
       }
-  
-      // If the updated baby is the current one, update current selection
-      const current = localStorage.getItem('currentBaby');
+
+      const current = localStorage.getItem(this.currentBabyKey);
       if (current === oldName) {
-        localStorage.setItem('currentBaby', newName);
+        localStorage.setItem(this.currentBabyKey, newName);
       }
-  
+
       return true;
     }
-  
+
     return false;
+  }
+
+  clearLogsFor(babyName: string) {
+    localStorage.removeItem(this.activityPrefix + babyName);
+    alert('Clear logs successfully for ' + babyName);
   }
 
   

@@ -1,6 +1,6 @@
-<div class="name">
-    <h2>Baby Name: {{ babyName }}</h2>
-  
+<h2>Baby Name: {{ babyName }}</h2>
+<div class="parent">
+  <div class="name">
     <div class="activity">
       <h4>Feeding:</h4>
       <p *ngIf="latestFeeding">
@@ -31,4 +31,6 @@
       <p *ngIf="!latestDiaper">No diaper change records.</p>
     </div>
   </div>
+</div>
+
   

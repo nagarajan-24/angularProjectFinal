@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './settings.component.css'
 })
 export class SettingsComponent {
+  bName = '';
   oldName = '';
   newName = '';
   successMessage = '';
@@ -36,6 +37,10 @@ export class SettingsComponent {
       this.errorMessage = 'Old baby name not found';
       this.successMessage = '';
     }
+  }
+  clearLogs(){
+    this.bs.clearLogsFor(this.bName);
+    this.bName='';
   }
 
 }
