@@ -39,8 +39,11 @@ export class SettingsComponent {
     }
   }
   clearLogs(){
+    const conformation = confirm('Are you sure you want to delete baby activities?');
+    if(conformation){
     this.bs.clearLogsFor(this.bName);
     this.bName='';
+    }
   }
 
 }

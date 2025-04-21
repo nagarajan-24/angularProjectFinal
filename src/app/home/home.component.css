@@ -84,3 +84,35 @@
 .cont2 button:hover {
   background-color: #45a049;
 }
+@media (min-width: 600px) {
+  .parent {
+    flex-direction: row; 
+    justify-content: space-around; 
+  }
+  .cont2 {
+    display: block;
+    margin-left: 20px; 
+  }
+}
+@media (max-width: 600px) {
+  .cont1, .cont2 {
+    width: 100%; 
+    margin: 10px 0;
+  }
+  .cont2 {
+    margin-top: 20px; 
+  }
+
+  .btn {
+    margin-top: 15px;
+  }
+}
+@media (max-width: 375px) {
+  .title p {
+    font-size: 1.2em; 
+  }
+
+  .list li {
+    font-size: 0.9em;
+  }
+}

@@ -30,23 +30,25 @@ export class ServiceService {
       alert('Already that baby name is there');
     }
   }
-  setCurrentBabyName(name: string) {
-    localStorage.setItem(this.currentBabyKey, name);
-  }
-  getCurrentBabyName(): string {
-    return localStorage.getItem(this.currentBabyKey) || '';
-  }
   getBabyLogs(babyName: string): any[] {
     return JSON.parse(localStorage.getItem(this.activityPrefix + babyName) || '[]');
-  }
-  getLogsForCurrentBaby(): any[] {
-    return this.getBabyLogs(this.getCurrentBabyName());
   }
   addActivity(babyName: string, activity: any) {
     const logs = this.getBabyLogs(babyName);
     logs.push(activity);
     localStorage.setItem(this.activityPrefix + babyName, JSON.stringify(logs));
   }
+  setCurrentBabyName(name: string) {
+    localStorage.setItem(this.currentBabyKey, name);
+  }
+  getCurrentBabyName(): string {
+    return localStorage.getItem(this.currentBabyKey) || '';
+  }
+  
+  getLogsForCurrentBaby(): any[] {
+    return this.getBabyLogs(this.getCurrentBabyName());
+  }
+ 
 
   updateBabyName(oldName: string, newName: string): boolean {
     const allBabies = JSON.parse(localStorage.getItem(this.babyListKey) || '[]');
