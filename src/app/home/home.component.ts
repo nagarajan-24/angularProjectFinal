@@ -34,6 +34,9 @@ export class HomeComponent {
   }
 
   onSave(val: HTMLInputElement) {
+    if(val.value === ''){
+      this.showContent = false;
+    }
     this.newbName = val.value.trim();
     if (this.newbName) {
       this.bs.createBaby(this.newbName);

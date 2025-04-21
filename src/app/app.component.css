@@ -5,30 +5,70 @@
   background: linear-gradient(to right, #4facfe, #25e8f2);
   padding: 1rem 2rem;
   color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  height: 4em;
-  position: sticky;
-  top: 0;
+  height: auto;
+  flex-wrap: wrap;
+  position: relative;
   z-index: 1000;
 }
 
-.nav-title {
-  font-size: 1.8rem;
-  font-weight: bold;
+#logo {
+  flex: 1;
 }
 
-.nav-link a {
-  margin-left: 1.8rem;
+.link {
+  display: flex;
+  gap: 1.8rem;
+}
+
+ .link a {
   text-decoration: none;
-  color: white;
-  font-weight: 500;
-  transition: color 0.3s, border-bottom 0.3s;
+  font-weight: 300;
   padding-bottom: 2px;
-  border-bottom: 2px solid transparent;
-}
+  transition: color 0.3s, border-bottom 0.3s;
+} 
 
-.nav-link a:hover {
+.link a:hover {
   color: #f0f0f0;
   border-bottom: 2px solid white;
+}
+
+.menu-btn {
+  display: none;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+    z-index: 1001;
+  }
+
+  .link {
+    display: none;
+  }
+
+  .link.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50vw; 
+    height: 50vh;
+    background-color: #002f4b;
+    padding: 2rem 1rem;
+    z-index: 1000;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .link a {
+    padding: 1rem 0;
+    color: white;
+    font-size: 18px;
+  }
+
+  .link a:hover {
+    color: #00e5ff;
+    border-bottom: none;
+  }
 }

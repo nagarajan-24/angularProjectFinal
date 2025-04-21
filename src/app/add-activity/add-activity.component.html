@@ -1,34 +1,32 @@
 <div class="parent">
-    <div class="cont1">
-      <form class="cont2" #activityForm="ngForm" (ngSubmit)="onSubmit(activityForm)">
-        <div class="name">
-          <label for="bName">Baby Name :</label>
-          <input id="details" type="text" placeholder="Baby Name"ngModel name="bName"required style="width: 18em;height: 2em;margin-top: 1em;padding-left: 2em;"/>
-        </div>
-  
-        <div class="activity">
-          <label for="type">Activity :</label>
-          <select id="type" ngModel name="type" required
-            style="width: 21em; margin-left: 2.6em; height: 2.8em; border-style: solid;">
-            <option value="" disabled selected>Select an activity</option>
-            <option value="feeding">Feeding</option>
-            <option value="sleep">Sleep</option>
-            <option value="diaper">Diaper Change</option>
-          </select>
-        </div>
-  
-        <div class="time">
-          <label for="sTime">Start Time :</label>
-          <input id="details" type="datetime-local" ngModel name="sTime" required
-            style="width: 20.5em; height: 2.8em; border-style: solid; margin-bottom: 2em;border-width: 1px;"/><br />
-  
-          <label for="eTime">End Time :</label>
-          <input id="details" type="datetime-local" ngModel name="eTime" required
-            style="width: 20.5em; height: 2.8em; border-style: solid;border-width: 1px;"/>
-        </div>
-  
-        <button type="submit">Add Activity</button>
-      </form>
-    </div>
+  <div class="cont1">
+    <form class="cont2" #activityForm="ngForm" (ngSubmit)="onSubmit(activityForm)">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Baby Name</mat-label>
+        <input matInput placeholder="Enter baby name" name="bName" ngModel required />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Activity</mat-label>
+        <mat-select name="type" ngModel required>
+          <mat-option value="" disabled>Select an activity</mat-option>
+          <mat-option value="feeding">Feeding</mat-option>
+          <mat-option value="sleep">Sleep</mat-option>
+          <mat-option value="diaper">Diaper Change</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Start Time</mat-label>
+          <input matInput type="datetime-local" name="sTime" ngModel required />
+        </mat-form-field>
+    
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>End Time</mat-label>
+          <input matInput type="datetime-local" name="sTime" ngModel required />
+        </mat-form-field>
+    </form>
+    <button mat-flat-button >Add Activity</button>
   </div>
+</div>
   
