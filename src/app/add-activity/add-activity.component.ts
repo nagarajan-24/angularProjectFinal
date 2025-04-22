@@ -1,43 +1,36 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule, NgForm,  } from '@angular/forms';
+import { Component, NgModule } from '@angular/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ServiceService } from '../service.service';
-import { MatFormField, MatHint, MatInput, MatLabel } from '@angular/material/input';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-activity',
-  standalone: true,
-  imports: [CommonModule,FormsModule,MatInput,MatSelect,MatFormField,MatLabel,MatOption,MatNativeDateModule,MatIconModule],
   templateUrl: './add-activity.component.html',
-  styleUrls: ['./add-activity.component.css']
+  styleUrls: ['./add-activity.component.css'],
+  standalone: true, 
+  imports: [FormsModule]  
 })
 export class AddActivityComponent {
-  constructor(private bs: ServiceService) {}
-
-  onSubmit(form: NgForm) {
+  constructor(public dialog: MatDialog, private bs: ServiceService) {}
+  onSubmit(form: NgForm): void {
     if (form.invalid) {
-      alert('All fields are required!');
+    alert("All fields are required");
       return;
     }
-
     const data = form.value;
 
     const activity = {
       name: data.bName,
       type: data.type,
       sTime: data.sTime,
-      eTime: data.eTime,
+      eTime: data.eTime
     };
-    console.log(activity);
 
+    console.log(activity);
     this.bs.addActivity(data.bName, activity);
-    alert('Activity added successfully!');
+    alert("Add activity successfully!!!")
     form.reset();
   }
-} 
-
-
-
+}

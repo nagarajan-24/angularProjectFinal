@@ -1,32 +1,28 @@
 <div class="parent">
   <div class="cont1">
     <form class="cont2" #activityForm="ngForm" (ngSubmit)="onSubmit(activityForm)">
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Baby Name</mat-label>
-        <input matInput placeholder="Enter baby name" name="bName" ngModel required />
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Activity</mat-label>
-        <mat-select name="type" ngModel required>
-          <mat-option value="" disabled>Select an activity</mat-option>
-          <mat-option value="feeding">Feeding</mat-option>
-          <mat-option value="sleep">Sleep</mat-option>
-          <mat-option value="diaper">Diaper Change</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Start Time</mat-label>
-          <input matInput type="datetime-local" name="sTime" ngModel required />
-        </mat-form-field>
-    
-
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>End Time</mat-label>
-          <input matInput type="datetime-local" name="sTime" ngModel required />
-        </mat-form-field>
+      <div class="form-group">
+        <label for="bName" class="form-label">Baby Name:</label>
+        <input type="text" placeholder="Enter baby name" name="bName" ngModel required id="bName" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label for="activityType" class="form-label">Activity:</label>
+        <select name="type" ngModel required id="activityType" class="form-input">
+          <option value="" disabled selected>Select an activity</option>
+          <option value="feeding">Feeding</option>
+          <option value="sleep">Sleep</option>
+          <option value="diaper">Diaper Change</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="sTime" class="form-label">Start Time:</label>
+        <input type="datetime-local" name="sTime" ngModel required id="sTime" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label for="eTime" class="form-label">End Time:</label>
+        <input type="datetime-local" name="eTime" ngModel required id="eTime" class="form-input" />
+      </div>
+      <button type="submit" class="btn-submit">Add Activity</button>
     </form>
-    <button mat-flat-button >Add Activity</button>
   </div>
 </div>
-  

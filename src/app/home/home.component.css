@@ -48,6 +48,7 @@
 
 .btn button {
   margin-top: 1rem;
+  margin-left: 2em;
   background-color: #4facfe;
   border: none;
   color: white;
@@ -72,7 +73,7 @@
 
 .cont2 button {
   background-color: #4caf50;
-  margin-left: 8.3em;
+  margin-left: 6em;
   color: white;
   padding: 0.6rem 1.2rem;
   border: none;
@@ -80,7 +81,6 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 .cont2 button:hover {
   background-color: #45a049;
 }

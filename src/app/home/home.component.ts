@@ -40,7 +40,6 @@ export class HomeComponent {
     this.newbName = val.value.trim();
     if (this.newbName) {
       this.bs.createBaby(this.newbName);
-      this.newbName = '';
       val.value = '';
       this.showContent = false;
       this.loadBabies();

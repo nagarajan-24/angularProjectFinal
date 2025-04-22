@@ -3,11 +3,13 @@ h2 {
   color: #333;
   font-size: 1.8rem;
 }  
-.parent{
+
+.parent {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .name {
   background-color: #ffffff;
   padding: 1em;
@@ -15,6 +17,7 @@ h2 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 300px;
+  max-width: 100%;
 }
 
 .activity {
@@ -23,8 +26,20 @@ h2 {
   padding: 1rem 1.2rem;
   margin-bottom: 1rem;
   border-radius: 8px;
-  h4 {
-    margin: 0 0 0.5rem;
-    color: #007acc;
+}
+
+.activity h4 {
+  margin: 0 0 0.5rem;
+  color: #007acc;
+}
+@media (max-width: 768px) {
+  .name {
+    width: 90%;  
+    padding: 0.8em;  
+  }
+
+  .activity {
+    width: 90%;  
+    padding: 0.8rem 1rem;  
   }
 }

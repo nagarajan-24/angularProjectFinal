@@ -1,8 +1,8 @@
 <div class="gf">
     <div class="parent">
         <div class="updateName">
-            <input type="text" placeholder="Old baby name" [(ngModel)]="oldName">
-            <input type="text" placeholder="New baby name" [(ngModel)]="newName">
+            <input matInput placeholder="Old Baby Name" [(ngModel)]="oldName">
+          <input matInput placeholder="New Baby Name" [(ngModel)]="newName">
             <button (click)="updateName()">Update Name</button>
         </div>
         <div>
@@ -12,9 +12,30 @@
     </div>
     <div class="parent">
         <div class="clearLogs">
-            <input type="text" placeholder="Baby name" [(ngModel)]="bName">
-                <button mat-raised-button (click)="openDialog()"></button>
+            <input matInput placeholder="Baby Name" [(ngModel)]="bName">
             <!--<button (click)="clearLogs()">Clear Logs</button>-->
+                <button class="btn btn-primary" (click)="clearLogs()">Clear Logs</button>
         </div>
     </div>
 </div>
+  
+  <!-- Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+    <h4 class="modal-title">Modal Heading</h4>
+    <button type="button" class="btn-close" (click)="closeModel()" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+    Modal body..
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="closeModel()" data-bs-dismiss="modal">Close</button>
+    </div>
+    </div>
+    </div>
+    </div> I
+    
+
+

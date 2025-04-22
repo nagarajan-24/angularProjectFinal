@@ -3,7 +3,6 @@ import { ServiceService } from '../service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
 
 @Component({
   selector: 'app-settings',
@@ -41,19 +40,30 @@ export class SettingsComponent {
     }
   }
   clearLogs(){
-    if(!this.bName){
-      alert("Please enter baby name");
+    if(this.bName===''){
+      alert('please enter baby name');
+      return ;
     }
     else{
-    const conformation = confirm('Are you sure you want to delete baby activities?');
-    if(conformation){
-    this.bs.clearLogsFor(this.bName);
-    this.bName='';
+      let conf = confirm('Are you sure delete baby activity');
+      if(conf){
+        this.bs.clearLogsFor(this.bName)
+        this.bName=''
+      }
     }
   }
+ openModel(){
+  console.log('hi')
+  const modelDiv =document.getElementById('myModal');
+  if(modelDiv!=null){
+    modelDiv.style.display='block'
   }
-openDialog(){
-  this.dialog.open(DialogExampleComponent)
-}
-
+ }
+ closeModel(){
+  console.log("hello")
+  const modelDiv =document.getElementById('myModal');
+  if(modelDiv!=null){
+    modelDiv.style.display='none'
+  }
+ }
 }

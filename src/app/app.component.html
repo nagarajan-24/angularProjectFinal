@@ -1,18 +1,16 @@
 <mat-toolbar class="navbar">
   <div id="logo" class="mat-display-3">Daily Activity Logger</div>
 
-  <!-- Hamburger icon button -->
+
   <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
     <mat-icon>{{ menuOpen ? 'close' : 'menu' }}</mat-icon>
   </button>
-
-  <!-- Responsive navigation links -->
   <div class="link" [class.open]="menuOpen">
     <a mat-button  [routerLink]="['/']" (click)="closeMenu()">Home</a>
     <a mat-button  [routerLink]="['/activity']" (click)="closeMenu()">Activity Feed</a>
     <a mat-button  [routerLink]="['/add']" (click)="closeMenu()">Add Activity</a>
-    <a mat-button  [routerLink]="['/summary']" (click)="closeMenu()">Activity Summary</a>
-    <a mat-button  [routerLink]="['/settings']" (click)="closeMenu()">Settings</a>
+    <a mat-button  [routerLink]="['/summary']" (click)="closeMenu()"[ngClass]="{'border-class': isClicked}">Activity Summary</a>
+    <a mat-button  [routerLink]="['/settings']" (click)="closeMenu()" [ngClass]="{'border-class': isClicked}">Settings</a>
   </div>
 </mat-toolbar>
 

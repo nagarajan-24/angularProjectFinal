@@ -7,8 +7,8 @@ import { MatHint, MatInputModule, MatLabel } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatDialogActions, MatDialogContent, MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 const material = [
@@ -24,11 +24,16 @@ const material = [
   MatNativeDateModule,
   MatHint,
   MatDatepickerModule,
+  MatDialogModule,
+  MatDialogContent,
+  MatDialogTitle,
+  MatDialogActions,
   MatDialogModule
-  
+
 ]
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [material],
   exports :[material]
 })
